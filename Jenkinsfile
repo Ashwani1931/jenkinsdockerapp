@@ -19,9 +19,9 @@ pipeline {
         }
         stage('Pusing the Image Into Docker HUB') {
             steps {
-                withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWD', variable: 'DOCKERPASSWORD')]) {
+                withCredentials([string(credentialsId: 'docker_cred', variable: 'pass1')]) {
     // some block
-                 sh 'sudo docker login -u ashroot -p  $DOCKERPASSWORD'
+                 sh 'sudo docker login -u ashroot -p  $pass1'
                  sh 'sudo docker push ashroot/myimagetest:${BUILD_NUMBER}'
 }
                
