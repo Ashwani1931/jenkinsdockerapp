@@ -46,7 +46,7 @@ pipeline {
             steps {
                 retry(7)  {
                     sh 'curl -s localhost:4545/java-web-app/ | grep -i sehwag'
-}
+                }
             }
         }
         stage('Asking For Production Release?') {
@@ -60,8 +60,7 @@ pipeline {
                 sh 'kubectl create deployment ashvini --image ashroot/myimagetest:${BUILD_NUMBER}'
                 sh 'wget https://raw.githubusercontent.com/ashroot/jenkinsdockerapp/main/webappsvc.yml '
                 sh 'kubectl apply -f webappsvc.yml'
-}
+                }
             }
         }
-    }  
-}
+    }
